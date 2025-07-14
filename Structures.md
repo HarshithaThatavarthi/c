@@ -142,3 +142,145 @@ int main()
     return 0;
 }
 ```
+### 22. Define a union to represent the size of a product, which can be specified in centimeters, inches, or feet. Write a function to convert the size from one unit to another (e.g., centimeters to inches). 
+```c
+
+```
+### 23. Define a structure to represent a date with day, month, and year (all integers). Write a function to check if a given year is a leap year. 
+```c
+#include <stdio.h>
+struct date{
+    int day;
+    int month;
+    int year;
+};
+
+void leap_year()
+{
+    struct date obj;
+    printf("Enter day :");
+    scanf("%d",&obj.day);
+    printf("Enter the month :");
+    scanf("%d",&obj.month);
+    printf("Enter the year :");
+    scanf("%d",&obj.year);
+    check_leap_year(obj.day,obj.month,obj.year);
+}
+
+void check_leap_year(int day,int month,int year)
+{
+    if((year %4==0 && year % 100 !=0) || (year%400==0))
+    {
+        printf("The given %d - %d - %d is a leap year.",day,month,year);
+    }
+    else
+    {
+        printf("The given %d -%d - %d is not a leap year.",day,month,year);
+    }
+}
+
+int main()
+{
+    leap_year();
+
+    return 0;
+}
+```
+### 24. Define a structure to represent a complex number with real and imaginary parts (both floats). Write a function to add two complex numbers represented by structures.
+```c
+#include<stdlib.h>
+#include <stdio.h>
+struct complex {
+	int real;
+	int imaginary;
+};
+
+void add_complex(struct complex number1,struct complex number2)
+{
+    int sum_real;
+    int sum_imaginary;
+    sum_real=number1.real+number2.real;
+    sum_imaginary=number1.imaginary+number2.imaginary;
+    if(sum_imaginary>=0){
+        printf("The sum of two complex numbers is %d + i%d",sum_real,sum_imaginary);
+    }
+    else{
+        printf("The sum of two complex numbers is %d - i%d",sum_real,abs(sum_imaginary));
+    }
+}
+
+
+int main()
+{
+	struct complex number1;
+	struct complex number2;
+	printf("Enter the real part of complex number1: ");
+	scanf("%d",&number1.real);
+	printf("Enter the imaginary part of complex number1: ");
+	scanf("%d",&number1.imaginary);
+	printf("Enter the real part of complex number2: ");
+	scanf("%d",&number2.real);
+	printf("Enter the imaginary part of complex number2: ");
+	scanf("%d",&number2.imaginary);
+	add_complex(number1,number2);
+	return 0;
+}
+```
+### 25. Implement a linked list using structures. Each node in the list should hold an integer value and a pointer to the next node. 
+```c
+#include <stdio.h>
+#include<stdlib.h>
+struct node{
+    int data;
+    struct node *next;
+};
+
+struct node* head=NULL,*temp=NULL;
+struct node *createNode(int value)
+{
+    struct node *newnode=(struct node *)malloc(sizeof(struct node));
+    newnode->data=value;
+    newnode->next=NULL;
+    return newnode;
+}
+int push(int value)
+{
+    struct node *newnode=createNode(value);
+    if(head==NULL)
+    {
+        head=newnode;
+        temp=head;
+    }
+    else
+    {
+        temp->next=newnode;
+        temp=newnode;
+    }
+}
+
+void display()
+{
+    //struct node*head=NULL;
+    temp=head;
+    while(temp!=NULL)
+    {
+        printf("%d   ",temp->data);
+        temp=temp->next;
+    }
+    printf("\n");
+}
+
+int main()
+{
+    push(10);
+    push(20);
+    push(30);
+    push(40);
+    display();
+    return 0;
+}
+```
+### 26. Define a self-referential structure to represent a binary tree node. Each node should have data (integer) and pointers to left and right child nodes. 
+```c
+
+```
